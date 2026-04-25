@@ -1,22 +1,38 @@
-// parent component
+import React, { useState } from 'react'
 
-import Header from "./Component/Header";
+const App = () => {
+  const [Likes,setLikes] = useState(0);
+  // const [Dislikes,setDislikes] = useState(0);
 
+  const likeshandler = () =>
+    {
+      setLikes(Likes+1);
+       
+  }
 
-function App() {
-
-    // 1. create a function in the parent component
-    // to receive the data from the child component
-    const receiveChildData = (name, age) => {
-        console.log(`Hello ${name}! You are ${age} years old!`);
+  const Dislikeshandler = () => {
+    if (Likes > 0)
+    {
+      setLikes(Likes -1 );
     }
+    
+  }
 
-    // 2. pass the function receiveChildData as props
-    return (
-        <>
-            <Header receiveChildData={receiveChildData} />
-        </>
-    )
+    //  console.log(`Likes count:${Likes}`);
+    //  console.log(`Dislike count:${Dislikes}`);
+
+  return (
+    <>    
+    <h1>Likes: {Likes}</h1>
+    <button onClick={likeshandler}>
+      <span className="material-symbols-outlined">thumb_up</span>
+      
+</button>&nbsp;&nbsp;
+    <button onClick={Dislikeshandler}>
+      <span className="material-symbols-outlined">thumb_down</span>
+    </button>
+    </>
+  )
 }
 
 export default App;
