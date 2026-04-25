@@ -6,7 +6,8 @@ const App = () => {
     Likes:0,
     Dislikes:0
   });
- 
+  
+   const [history, sethistory] = useState([]);
 
   const likeshandler = () =>
     {
@@ -14,6 +15,7 @@ const App = () => {
         ...reaction,
         Likes: reaction.Likes+1
       })
+      sethistory([...history,'L']);
        
   }
 
@@ -23,11 +25,13 @@ const App = () => {
         ...reaction,
         Dislikes: reaction.Dislikes+1
       })
+      sethistory([...history,'D']);
 
     
   }
 
-console.log(reaction);
+//console.log(reaction);
+console.log(history);
 
   return (
     <>    
