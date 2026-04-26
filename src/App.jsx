@@ -1,49 +1,51 @@
-import React, { useState } from 'react'
+// controlled input: an input element whose value is controlled by React state.
+
+import { useState } from "react";
 
 const App = () => {
+  const [email, setEmail] = useState("");
+  const [password, setpassword] = useState("");
 
-  const [reaction,setReaction] = useState({
-    Likes:0,
-    Dislikes:0
-  });
-  
-   const [history, sethistory] = useState([]);
-
-  const likeshandler = () =>
-    {
-      setReaction({
-        ...reaction,
-        Likes: reaction.Likes+1
-      })
-      sethistory([...history,'L']);
-       
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log('form submitted');
+    console.log(email);
+    console.log(password);
+    setEmail("")
+    setpassword("")
+    event.target.email.focus();
   }
-
-  const Dislikeshandler = () => {
-   
-      setReaction({
-        ...reaction,
-        Dislikes: reaction.Dislikes+1
-      })
-      sethistory([...history,'D']);
-
-    
-  }
-
-//console.log(reaction);
-console.log(history);
 
   return (
-    <>    
-    
-    <button onClick={likeshandler}>
-      <span className="material-symbols-outlined">thumb_up</span>
-      {reaction.Likes}
-    </button>&nbsp;&nbsp;
-    <button onClick={Dislikeshandler}>
-      <span className="material-symbols-outlined">thumb_down</span>
-      {reaction.Dislikes}
-    </button>
+    <>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <div>
+          <input
+            name="email"
+            type="email"
+            placeholder="email..."
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+        </div>
+
+        <div>
+          <input
+            name="password"
+            type="password"
+            placeholder="password..."
+            onChange={(e) => setpassword(e.target.value)}
+            value={password}
+            required
+          />
+        </div>
+
+        <button type="submit">
+          Login
+        </button>
+      </form>
     </>
   )
 }
