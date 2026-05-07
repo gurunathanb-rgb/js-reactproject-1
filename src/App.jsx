@@ -1,51 +1,30 @@
-// controlled input: an input element whose value is controlled by React state.
-
-import { useState } from "react";
-
 const App = () => {
-  const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log('form submitted');
-    console.log(email);
-    console.log(password);
-    setEmail("")
-    setpassword("")
-    event.target.email.focus();
-  }
+  const tn_cities = [
+    'Thanjavur',
+    'Trichy',
+    'Madurai',
+    'Coimbatore',
+    'Chennai',
+    'Salem',
+    'Kanchipuram',
+    'Tiruvallur',
+    'Chennai',
+    'Ramanathapuram'
+  ];
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <input
-            name="email"
-            type="email"
-            placeholder="email..."
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            required
-          />
-        </div>
-
-        <div>
-          <input
-            name="password"
-            type="password"
-            placeholder="password..."
-            onChange={(e) => setpassword(e.target.value)}
-            value={password}
-            required
-          />
-        </div>
-
-        <button type="submit">
-          Login
-        </button>
-      </form>
+      <h1>Tamil Nadu Cities</h1>
+      <ul>
+        {
+          tn_cities
+            .map((tn_cities, index) => {
+              return <li key={index}>{tn_cities}</li>
+            }
+            )
+        }
+      </ul>
     </>
   )
 }
