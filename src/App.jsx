@@ -1,23 +1,32 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import HomeWrappers from "./wrappers/HomeWrappers";
+import Register from "./Page/Register";
+import Login from "./Page/Login";
+import Home from "./Page/Home";
 
 const router = createBrowserRouter([
-
-     {
+  {
       path: '/',
-      element: <h1>Welcome to React Page</h1>
-     },
+      element: <HomeWrappers />,
+      children:[
+        {
+          path:"",
+          element: <Home/>
 
-     {
-      path:'/contact-us',
-      element: <h1> Contact Us</h1>
-     },
+        },
+        {
+          path:"register",
+          element: <Register/>
+        },
+        {
+          path:"login",
+          element: <Login/>
+        }
+        
+      ]
+    }
+  ]);  
 
-     {
-      path:'/AboutUs',
-      element: <h1>List of Customer</h1>
-     }
-
-]);
 
 
 
