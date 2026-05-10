@@ -1,31 +1,29 @@
-const App = () => {
+import { createBrowserRouter, RouterProvider } from "react-router";
 
-  const tn_cities = [
-    'Thanjavur',
-    'Trichy',
-    'Madurai',
-    'Coimbatore',
-    'Chennai',
-    'Salem',
-    'Kanchipuram',
-    'Tiruvallur',
-    'Chennai',
-    'Ramanathapuram'
-  ];
+const router = createBrowserRouter([
 
+     {
+      path: '/',
+      element: <h1>Welcome to React Page</h1>
+     },
+
+     {
+      path:'/contact-us',
+      element: <h1> Contact Us</h1>
+     },
+
+     {
+      path:'/AboutUs',
+      element: <h1>List of Customer</h1>
+     }
+
+]);
+
+
+
+export const App = () => {
   return (
-    <>
-      <h1>Tamil Nadu Cities</h1>
-      <ul>
-        {
-          tn_cities
-            .map((tn_cities, index) => {
-              return <li key={index}>{tn_cities}</li>
-            }
-            )
-        }
-      </ul>
-    </>
+    <RouterProvider router={router}/>
   )
 }
 
