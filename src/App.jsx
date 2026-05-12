@@ -1,30 +1,36 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+//import { data } from 'react-router'
 
 const App = () => {
-  const[count, setCount] = useState(0)
-  const[count1,setCount1] = useState(0)
+
+  const [Employeedet, setEmployeedet] = useState([]);
+  
 
   //With  dependencies list [count] using UseEffect
   useEffect( () =>  {
 
-        fetch('https://6a03077f0d92f63dd254c14e.mockapi.io/Employeedet')
+        axios.get('https://6a03077f0d92f63dd254c14e.mockapi.io/Employeedet')
 
-   .then(response => response.json())
-   .then(Employeedet => console.log(Employeedet))
+   //.then(response => response.json())
+   //.then(data => console.log(data.data))
+   .then(response =>  setEmployeedet(response.data))
 
-  } , [count,count1])  // adding an dependencies once it changes it will render
+  } , [])  // adding an dependencies once it changes it will render
   //console.log(count1)
   
   return (
-    <div>
-      <button onClick={() => setCount(count+1)}>
-      Fetch Employee Details
-      </button> &nbsp;
-
-      <button onClick={()=> setCount1(count1+1)}>
-        Fetch Employee Details -state
-      </button>
-      </div>
+    <>
+      <h1> Employee List</h1>
+      <ul>
+        {
+          Employeedet
+          .map (item => {
+            return<li key={item.id}>{item.EmployeeName}</li>
+          })
+        }
+      </ul>
+    </>
   )
 }
 
