@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Empllist from './Component/empllist';
 //import { data } from 'react-router'
 
 const App = () => {
@@ -26,7 +27,10 @@ const App = () => {
         {
           Employeedet
           .map (item => {
-            return<li key={item.id}>{item.EmployeeName}</li>
+            return <Empllist
+              key={item.id}
+              item ={item}/>
+            
           })
         }
       </ul>
