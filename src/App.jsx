@@ -1,39 +1,26 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import HomeWrappers from "./wrappers/HomeWrappers";
-import Register from "./Page/Register";
-import Login from "./Page/Login";
-import Home from "./Page/Home";
+import React, { useEffect, useState } from 'react'
 
-const router = createBrowserRouter([
-  {
-      path: '/',
-      element: <HomeWrappers />,
-      children:[
-        {
-          path:"",
-          element: <Home/>
+const App = () => {
+  const[count, setCount] = useState(0);
 
-        },
-        {
-          path:"register",
-          element: <Register/>
-        },
-        {
-          path:"login",
-          element: <Login/>
-        }
-        
-      ]
-    }
-  ]);  
+  //Witout dependencies using UseEffect
+  useEffect( () =>  {
 
+        fetch('https://6a03077f0d92f63dd254c14e.mockapi.io/Employeedet')
 
+   .then(response => response.json())
+   .then(Employeedet => console.log(Employeedet))
 
+  })
 
-export const App = () => {
+  
   return (
-    <RouterProvider router={router}/>
+    <div>
+      <button onClick={() => setCount(count+1)}>
+      Fetch Employee Details
+      </button>
+      </div>
   )
 }
 
-export default App;
+export default App
