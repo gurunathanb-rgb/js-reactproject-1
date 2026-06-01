@@ -1,0 +1,50 @@
+1238f88 (HEAD, origin/dnd, dnd) local persistence added --localStorage
+53ef992 drag and drop
+9e3004c (origin/context-api, context-api) context api example
+87adde0 props drilling
+053f4b1 basic cleanup
+b717bbf moving todo to its own component
+9fc6c36 axios + list re-rendering
+07c9d3e useEffect --with dependencies list
+29acfc9 useEffect --with empty dependency list
+b8e085c useEffect --without dependencies
+6c7630d axios
+4b7fd1b api call & rendering with fetch
+1f30b2e api call using fetch and rendering
+bcf5e3a useEffect with empty dependency list
+11990a8 useEffect without dependencies --with a button trigger
+6b0ec42 useEffect without any dependencies
+c1ffbdc conditional rendering
+b83ef02 key prop in the html elemnet
+584e057 list rendering without map method
+045be70 button background color changed
+c704559 tailwindcss setup in React
+3656ae5 css in react
+7d88b37 form handling
+8768136 controlled input
+1b32c0f uncontrolled inputs
+7e3310c using arrays in state
+c9be42b array state
+ecda350 complex state
+b450042 adding multiple states
+d8c3f34 google fonts icons --import
+f9d0455 adding icon as a font
+12a9672 Merge branch 'main' into functional-components
+8de481c (origin/main, origin/HEAD, main) likes counter with dislike button
+1f6c4b5 likes counter with useState
+5eb47a4 like counter example --ordinary variable
+2496406 state management with useState
+b2524af ordinary variable --likes example
+f56b782 props drilling
+7c61909 passing data from child to parent
+701c5b8 destructuring props
+6b9dcdc passing data as props
+c00939c multiple components --functional components
+fa58fb7 creating multiple components using class component
+e97a30e class components
+9fb2704 functional components
+9f8d627 multiple components
+1f2c3ad first react component
+ceb568a initial commit
+
+https://sprightly-kleicha-958a08.netlify.app/
