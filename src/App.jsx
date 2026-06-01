@@ -1,41 +1,31 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import Empllist from './Component/empllist';
-//import { data } from 'react-router'
 
-const App = () => {
+import { themecontext } from './ThemeContext';
+import { ParentCompoenent } from './Component/ParentCompoenent';
+import { useState } from 'react';
 
-  const [Employeedet, setEmployeedet] = useState([]);
-  
+export default function App() {
+  const [theme, setTheme] = useState('light');
 
-  //With  dependencies list [count] using UseEffect
-  useEffect( () =>  {
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
 
-        axios.get('https://6a03077f0d92f63dd254c14e.mockapi.io/Employeedet')
-
-   //.then(response => response.json())
-   //.then(data => console.log(data.data))
-   .then(response =>  setEmployeedet(response.data))
-
-  } , [])  // adding an dependencies once it changes it will render
-  //console.log(count1)
-  
   return (
-    <>
-      <h1> Employee List</h1>
-      <ul>
-        {
-          Employeedet
-          .map (item => {
-            return <Empllist
-              key={item.id}
-              item ={item}/>
-            
-          })
-        }
-      </ul>
-    </>
-  )
+    // Broadcast the state and function to everything inside
+    <themecontext.Provider value={{ theme, toggleTheme }}>
+      <div style={{ 
+        background: theme === 'light' ? '#1fc23a' : 'yellow ', 
+        color: theme === 'light' ? 'yellow' : '#1fc23a',
+        padding: '20px',
+        minHeight: '100vh'
+      }}>
+        <h1>App Component (Grandparent)</h1>
+        <ParentCompoenent />
+      </div>
+    </themecontext.Provider>
+  );
 }
-
-export default App
