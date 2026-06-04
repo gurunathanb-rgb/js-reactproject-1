@@ -1,31 +1,67 @@
+// controlled input: an input element whose value is controlled by React state.
 
-import { themecontext } from './ThemeContext';
-import { ParentCompoenent } from './Component/ParentCompoenent';
-import { useState } from 'react';
+import { useState } from "react";
 
-export default function App() {
-  const [theme, setTheme] = useState('light');
+const App = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log('Logging in...');
+    console.log(email, password);
+
+    // reset the form
+    setEmail("");
+    setPassword("");
+
+    event.target.email.focus();
+  }
 
   return (
-    // Broadcast the state and function to everything inside
-    <themecontext.Provider value={{ theme, toggleTheme }}>
-      <div style={{ 
-        background: theme === 'light' ? '#1fc23a' : 'yellow ', 
-        color: theme === 'light' ? 'yellow' : '#1fc23a',
-        padding: '20px',
-        minHeight: '100vh'
-      }}>
-        <h1>App Component (Grandparent)</h1>
-        <ParentCompoenent />
-      </div>
-    </themecontext.Provider>
-  );
+    <div>
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col gap-4 w-100 mx-auto mt-10 border border-gray-300 rounded p-8 shadow-lg"
+      >
+        <h1
+          className="text-2xl font-bold text-center"
+        >Login</h1>
+        <div
+          className="flex flex-col gap-2"
+        >
+          <input
+            name="email"
+            type="email"
+            placeholder="Type your email..."
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+            className="border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+
+        <div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Type your password..."
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            className="border border-gray-300 rounded px-3 py-2 w-full"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-500 text-white rounded px-3 py-2 w-full"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  )
 }
+
+export default App;
